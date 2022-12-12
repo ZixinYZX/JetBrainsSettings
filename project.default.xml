@@ -1,0 +1,244 @@
+<application>
+  <component name="ProjectManager">
+    <defaultProject>
+      <component name="AutoImportSettings">
+        <option name="autoReloadType" value="SELECTIVE" />
+      </component>
+      <component name="CodeInsightWorkspaceSettings">
+        <option name="optimizeImportsOnTheFly" value="true" />
+      </component>
+      <component name="CompilerConfiguration">
+        <option name="BUILD_PROCESS_HEAP_SIZE" value="1536" />
+      </component>
+      <component name="CompilerWorkspaceConfiguration">
+        <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+        <option name="PARALLEL_COMPILATION" value="true" />
+      </component>
+      <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+        <file url="PROJECT" charset="UTF-8" />
+      </component>
+      <component name="JavaDocConfiguration">
+        <GENERAL>
+          <MODE>KEEP</MODE>
+          <OVERRIDDEN_METHODS>true</OVERRIDDEN_METHODS>
+          <SPLITTED_CLASS_NAME>true</SPLITTED_CLASS_NAME>
+          <LEVELS>
+            <LEVEL>FIELD</LEVEL>
+            <LEVEL>TYPE</LEVEL>
+            <LEVEL>METHOD</LEVEL>
+          </LEVELS>
+          <VISIBILITIES>
+            <VISIBILITY>PUBLIC</VISIBILITY>
+            <VISIBILITY>PROTECTED</VISIBILITY>
+            <VISIBILITY>DEFAULT</VISIBILITY>
+          </VISIBILITIES>
+        </GENERAL>
+        <TEMPLATES>
+          <CLASSES>
+            <CLASS>
+              <KEY>^.*(public|protected|private)*.+interface\s+\w+.*</KEY>
+              <VALUE>/**\n
+ * The interface ${name}.\n
+&lt;#if element.typeParameters?has_content&gt;        * \n
+&lt;/#if&gt;&lt;#list element.typeParameters as typeParameter&gt;        * @param &lt;${typeParameter.name}&gt; the type parameter\n
+&lt;/#list&gt; */</VALUE>
+            </CLASS>
+            <CLASS>
+              <KEY>^.*(public|protected|private)*.+enum\s+\w+.*</KEY>
+              <VALUE>/**\n
+ * The enum ${name}.\n
+ */</VALUE>
+            </CLASS>
+            <CLASS>
+              <KEY>^.*(public|protected|private)*.+class\s+\w+.*</KEY>
+              <VALUE>/**\n
+ * The type ${name}.\n
+&lt;#if element.typeParameters?has_content&gt;        * \n
+&lt;/#if&gt;&lt;#list element.typeParameters as typeParameter&gt;        * @param &lt;${typeParameter.name}&gt; the type parameter\n
+&lt;/#list&gt; */</VALUE>
+            </CLASS>
+            <CLASS>
+              <KEY>.+</KEY>
+              <VALUE>/**\n
+ * The type ${name}.\n
+ */</VALUE>
+            </CLASS>
+          </CLASSES>
+          <CONSTRUCTORS>
+            <CONSTRUCTOR>
+              <KEY>.+</KEY>
+              <VALUE>/**\n
+ * Instantiates a new ${name}.\n
+&lt;#if element.parameterList.parameters?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.parameterList.parameters as parameter&gt;         * @param ${parameter.name} the ${paramNames[parameter.name]}\n
+&lt;/#list&gt;&lt;#if element.throwsList.referenceElements?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.throwsList.referenceElements as exception&gt;         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
+&lt;/#list&gt; */</VALUE>
+            </CONSTRUCTOR>
+          </CONSTRUCTORS>
+          <METHODS>
+            <METHOD>
+              <KEY>^.*(public|protected|private)*\s*.*(\w(\s*&lt;.+&gt;)*)+\s+get\w+\s*\(.*\).+</KEY>
+              <VALUE>/**\n
+ * Gets ${partName}.\n
+&lt;#if element.typeParameters?has_content&gt;         * \n
+&lt;/#if&gt;&lt;#list element.typeParameters as typeParameter&gt;         * @param &lt;${typeParameter.name}&gt; the type parameter\n
+&lt;/#list&gt;&lt;#if element.parameterList.parameters?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.parameterList.parameters as parameter&gt;         * @param ${parameter.name} the ${paramNames[parameter.name]}\n
+&lt;/#list&gt;&lt;#if isNotVoid&gt;         *\n
+         * @return the ${partName}\n
+&lt;/#if&gt;&lt;#if element.throwsList.referenceElements?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.throwsList.referenceElements as exception&gt;         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
+&lt;/#list&gt; */</VALUE>
+            </METHOD>
+            <METHOD>
+              <KEY>^.*(public|protected|private)*\s*.*(void|\w(\s*&lt;.+&gt;)*)+\s+set\w+\s*\(.*\).+</KEY>
+              <VALUE>/**\n
+ * Sets ${partName}.\n
+&lt;#if element.typeParameters?has_content&gt;         * \n
+&lt;/#if&gt;&lt;#list element.typeParameters as typeParameter&gt;         * @param &lt;${typeParameter.name}&gt; the type parameter\n
+&lt;/#list&gt;&lt;#if element.parameterList.parameters?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.parameterList.parameters as parameter&gt;         * @param ${parameter.name} the ${paramNames[parameter.name]}\n
+&lt;/#list&gt;&lt;#if isNotVoid&gt;         *\n
+         * @return the ${partName}\n
+&lt;/#if&gt;&lt;#if element.throwsList.referenceElements?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.throwsList.referenceElements as exception&gt;         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
+&lt;/#list&gt; */</VALUE>
+            </METHOD>
+            <METHOD>
+              <KEY>^.*((public\s+static)|(static\s+public))\s+void\s+main\s*\(\s*String\s*(\[\s*\]|\.\.\.)\s+\w+\s*\).+</KEY>
+              <VALUE>/**\n
+ * The entry point of application.\n
+
+     &lt;#if element.parameterList.parameters?has_content&gt;         *\n
+&lt;/#if&gt;     * @param ${element.parameterList.parameters[0].name} the input arguments\n
+&lt;#if element.throwsList.referenceElements?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.throwsList.referenceElements as exception&gt;         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
+&lt;/#list&gt; */</VALUE>
+            </METHOD>
+            <METHOD>
+              <KEY>.+</KEY>
+              <VALUE>/**\n
+ * ${name}&lt;#if isNotVoid&gt; ${return}&lt;/#if&gt;.\n
+&lt;#if element.typeParameters?has_content&gt;         * \n
+&lt;/#if&gt;&lt;#list element.typeParameters as typeParameter&gt;         * @param &lt;${typeParameter.name}&gt; the type parameter\n
+&lt;/#list&gt;&lt;#if element.parameterList.parameters?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.parameterList.parameters as parameter&gt;         * @param ${parameter.name} the ${paramNames[parameter.name]}\n
+&lt;/#list&gt;&lt;#if isNotVoid&gt;         *\n
+         * @return the ${return}\n
+&lt;/#if&gt;&lt;#if element.throwsList.referenceElements?has_content&gt;         *\n
+&lt;/#if&gt;&lt;#list element.throwsList.referenceElements as exception&gt;         * @throws ${exception.referenceName} the ${exceptionNames[exception.referenceName]}\n
+&lt;/#list&gt; */</VALUE>
+            </METHOD>
+          </METHODS>
+          <FIELDS>
+            <FIELD>
+              <KEY>^.*(public|protected|private)*.+static.*(\w\s\w)+.+</KEY>
+              <VALUE>/**\n
+ * The constant ${element.getName()}.\n
+ */</VALUE>
+            </FIELD>
+            <FIELD>
+              <KEY>^.*(public|protected|private)*.*(\w\s\w)+.+</KEY>
+              <VALUE>/**\n
+    &lt;#if element.parent.isInterface()&gt;        * The constant ${element.getName()}.\n
+&lt;#else&gt;        * The ${name}.\n
+&lt;/#if&gt; */</VALUE>
+            </FIELD>
+            <FIELD>
+              <KEY>.+</KEY>
+              <VALUE>/**\n
+    &lt;#if element.parent.isEnum()&gt;        *${name} ${typeName}.\n
+&lt;#else&gt;        * The ${name}.\n
+&lt;/#if&gt;*/</VALUE>
+            </FIELD>
+          </FIELDS>
+        </TEMPLATES>
+      </component>
+      <component name="JsBuildToolPackageJson" sorting="DEFINITION_ORDER" />
+      <component name="MavenImportPreferences">
+        <option name="generalSettings">
+          <MavenGeneralSettings>
+            <option name="alwaysUpdateSnapshots" value="true" />
+            <option name="mavenHome" value="F:/apache-maven-3.8.6" />
+            <option name="showDialogWithAdvancedSettings" value="true" />
+            <option name="threads" value="1C" />
+            <option name="userSettingsFile" value="F:\apache-maven-3.8.6\conf\settings.xml" />
+          </MavenGeneralSettings>
+        </option>
+        <option name="importingSettings">
+          <MavenImportingSettings>
+            <option name="createModuleGroups" value="true" />
+          </MavenImportingSettings>
+        </option>
+      </component>
+      <component name="ProjectDictionaryState">
+        <dictionary name="Administrator" />
+      </component>
+      <component name="ProjectInspectionProfilesVisibleTreeState">
+        <entry key="Project Default">
+          <profile-state>
+            <expanded-state>
+              <State />
+            </expanded-state>
+            <selected-state>
+              <State>
+                <id>Ali-Check</id>
+              </State>
+            </selected-state>
+          </profile-state>
+        </entry>
+      </component>
+      <component name="ProjectViewState">
+        <option name="hideEmptyMiddlePackages" value="true" />
+        <option name="showLibraryContents" value="true" />
+      </component>
+      <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "LombokPluginIS_LOMBOK_JPS_FIX_ENABLED": "true",
+    "LombokPluginIS_LOMBOK_VERSION_CHECK_Enabled": "true",
+    "last_opened_file_path": "F:/Project",
+    "settings.editor.selected.configurable": "Settings.JavaScript"
+  }
+}]]></component>
+      <component name="SaveActionSettings">
+        <option name="actions">
+          <set>
+            <option value="activate" />
+            <option value="activateOnShortcut" />
+            <option value="organizeImports" />
+            <option value="reformatChangedCode" />
+            <option value="missingOverrideAnnotation" />
+            <option value="useBlocks" />
+            <option value="explicitTypeCanBeDiamond" />
+            <option value="suppressAnnotation" />
+            <option value="unnecessarySemicolon" />
+            <option value="accessCanBeTightened" />
+          </set>
+        </option>
+        <option name="configurationPath" value="" />
+      </component>
+      <component name="VcsManagerConfiguration">
+        <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+        <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+        <option name="CHECK_NEW_TODO" value="false" />
+        <confirmMoveToFailedCommit value="0" />
+      </component>
+      <component name="masterDetails">
+        <states>
+          <state key="ScopeChooserConfigurable.UI">
+            <settings>
+              <splitter-proportions>
+                <option name="proportions">
+                  <list>
+                    <option value="0.2" />
+                  </list>
+                </option>
+              </splitter-proportions>
+            </settings>
+          </state>
+        </states>
+      </component>
+    </defaultProject>
+  </component>
+</application>
